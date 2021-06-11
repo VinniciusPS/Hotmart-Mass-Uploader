@@ -16,7 +16,7 @@ import pyperclip
 # <DATABASE>
 
 # planilha
-database = pd.read_excel( r"C:\Users\Usuário\Downloads\Escola Nacional Online\DIREITO TRIBUTÁRIO - Prof. João Marcelo.xlsx")
+database = pd.read_excel( r"your path")
 
 colunas = database.columns
 
@@ -28,30 +28,15 @@ aula = database[ 'aula' ].values.tolist()
 cod = database[ 'cod' ].values.tolist()
 link = database[ 'link' ].values.tolist()
 
-# for loop iframe
-'''
-for i in range( len( codigo_list ) -1 , 0 - 1, -1 ):
-    iframe = '<iframe src="https://player.vimeo.com/video/' + str({i}) + '?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>' + '<p><a href="https://vimeo.com/' + str({i}) + '">344912</a></p>'
-    print( iframe.format( *codigo_list)) #o ultimo elemento da lista é movido para o começo com asterisco
-'''
-
 # <PATH>
 
 # Paths, URLS, frames
-Path = r"C:\Users\Usuário\Documents\chromedriver.exe"
+Path = r"yourpathhere"
 driver = webdriver.Chrome(Path)
 
-urL= "https://escolanacionaldeconcurs-bmrqmk.club.hotmart.com/admin/beta/dashboard" 
+urL= "https://youraccountname.club.hotmart.com/admin/beta/dashboard" 
 
-'''
-# <SHEETLOADER>
 
-def sheetloader():
-
-    titulo_hotmart = topicos_list[0] + " - " + "Professor: " + professor_list[0] + " - " + "Aula: " + str( capitulos_list[0] ) + " / " + str( aulas_list[0] ) 
-    iframe = '<iframe src="https://player.vimeo.com/video/' + str({0}) + '?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>' + '<p><a href="https://vimeo.com/' + str({0}) + '">344912</a></p>'
-
-'''
 # <WEBDRIVER>
 
 
@@ -60,17 +45,16 @@ try:
     driver.get(urL)
 
     # login
-    # uso dois parênteses no EC para ele aceitar mais de um argumento
     login = WebDriverWait(driver, 60).until(
         ec.presence_of_element_located((By.XPATH, '//*[@id="__blaze-root"]/div[2]/div/div/div/div/div/div[2]/div/form/div[1]/input'))
     )
-    login.send_keys("encformou@gmail.com")
+    login.send_keys("youremail")
 
     # senha
     password = WebDriverWait(driver, 10).until(
         ec.presence_of_element_located((By.XPATH, '//*[@id="__blaze-root"]/div[2]/div/div/div/div/div/div[2]/div/form/div[2]/span/input'))
     )
-    password.send_keys("!encformou10")
+    password.send_keys("yourpassword")
 
     # botao entrar
     enter =  WebDriverWait(driver, 10).until(
@@ -88,7 +72,7 @@ try:
 
         # abrir pagina de adicionar novo conteúdo a módulo
         time.sleep(5)
-        driver.get("https://escolanacionaldeconcurs-bmrqmk.club.hotmart.com/admin/beta/modules/Go4E8d5ROz/content/new")
+        driver.get("https://youraccountname.com/admin/beta/modules/cod/content/new")
 
         # adicionar  título
         titulo_hotmart = pasta[i] + " - " +  tema[i] + " - " + "Aula: " + str( aula[i] ) + " / " + str( total_de_aulas[i] )
@@ -134,42 +118,3 @@ try:
 except NameError as e:
     #driver.quit()
     print(str(e))
-
-    '''
-    modules = WebDriverWait(driver,20).until(
-        driver.find_element(By.LINK_TEXT, 'Conteúdo')
-    )
-    modules.click()
-    '''
-    
-    '''
-    #achar pelo nome do link
-    modules =  WebDriverWait(driver, 10).until(
-        ec.presence_of_element_located((By.LINK_TEXT, 'Conteúdo'))
-    )
-    modules.click()
-    #"/admin/beta/modules/n2OMoaBre6/content/new"
-    '''
-    '''
-    #achar pelo contains xpath
-    modules = WebDriverWait(driver, 10).until( 
-        ec.presence_of_element_located((By.XPATH, '//*[contains(@id,"g97BqRnRep")]'))
-    )
-    modules.click()
-    '''
-    '''
-    time.sleep(10)
-    links = [elem.get_attribute("href") for elem in driver.find_elements_by_tag_name("a")]
-    print(links)
-    print(len(links))
-    '''
-
-'''
-# listas
-topicos_list = database[ 'Matéria' ].values.tolist()
-capitulos_list = database[ 'Capitulo' ].values.tolist() #int
-aulas_list = database[ 'N_Aula' ].values.tolist() #int
-codigo_list = database[ 'Codigo' ].values.tolist()
-links_list = database[ 'Link' ].values.tolist()
-professor_list = database[ 'Professor' ].values.tolist()
-'''
