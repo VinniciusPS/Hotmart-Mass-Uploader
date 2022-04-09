@@ -1,6 +1,6 @@
 # Hotmart Mass Uploader
 
-![](img/video.jpg)
+![](video.jpg)
 
 ---
 
