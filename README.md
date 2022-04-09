@@ -1,4 +1,4 @@
-# Forecasting sales for Rossmann stores
+# Hotmart Mass Uploader
 
 ![](img/video.jpg)
 
